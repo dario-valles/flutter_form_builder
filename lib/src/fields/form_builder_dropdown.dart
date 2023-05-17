@@ -262,20 +262,13 @@ class FormBuilderDropdown<T> extends FormBuilderFieldDecoration<T> {
               value: hasValue ? field.value : null,
               style: style,
               isDense: isDense,
-              disabledHint: field.value != null
-                  ? (items
-                          .firstWhereOrNull((dropDownItem) =>
-                              dropDownItem.value == field.value)
-                          ?.child ??
-                      Text(field.value.toString()))
-                  : disabledHint,
+              disabledHint: field.value != null ? (items.firstWhereOrNull((dropDownItem) => dropDownItem.value == field.value)?.child ?? Text(field.value.toString())) : disabledHint,
               elevation: elevation,
               iconSize: iconSize,
               icon: icon,
               iconDisabledColor: iconDisabledColor,
               iconEnabledColor: iconEnabledColor,
-              onChanged:
-                  state.enabled ? (T? value) => state.didChange(value) : null,
+              onChanged: state.enabled ? (T? value) => state.didChange(value) : null,
               onTap: onTap,
               focusNode: state.effectiveFocusNode,
               autofocus: autofocus,
@@ -292,17 +285,15 @@ class FormBuilderDropdown<T> extends FormBuilderFieldDecoration<T> {
         );
 
   @override
-  FormBuilderFieldDecorationState<FormBuilderDropdown<T>, T> createState() =>
-      _FormBuilderDropdownState<T>();
+  FormBuilderFieldDecorationState<FormBuilderDropdown<T>, T> createState() => _FormBuilderDropdownState<T>();
 }
 
-class _FormBuilderDropdownState<T>
-    extends FormBuilderFieldDecorationState<FormBuilderDropdown<T>, T> {
+class _FormBuilderDropdownState<T> extends FormBuilderFieldDecorationState<FormBuilderDropdown<T>, T> {
   @override
   void didUpdateWidget(covariant FormBuilderDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.items != oldWidget.items) {
-      setValue(initialValue);
-    }
+    // if (widget.items != oldWidget.items) {
+    //   setValue(initialValue);
+    // }
   }
 }
